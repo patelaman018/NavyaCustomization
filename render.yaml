@@ -8,7 +8,7 @@ services:
     runtime: node
     rootDir: server
     plan: free
-    region: oregon
+    region: ohio          # same region as the Neon DB (us-east-2) to minimize latency
     buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /health
