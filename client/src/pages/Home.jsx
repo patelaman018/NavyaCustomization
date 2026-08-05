@@ -40,6 +40,8 @@ const asset = (p) => `${import.meta.env.BASE_URL}${p.replace(/^\//, '')}`;
 
 const NAV = ['Home', 'About Us', 'Products', 'Customization', 'Private Labels', 'Contact Us'];
 
+const INSTAGRAM_URL = 'https://www.instagram.com/navya_customs?igsh=MWlmbTQzZmU1aDRvOQ%3D%3D';
+
 const slides = [
   {
     eyebrow: 'Custom Branded Water',
@@ -221,8 +223,19 @@ function Home() {
           <div className="flex items-center gap-3">
             <span className="hidden items-center gap-1.5 md:flex"><FiClock size={12} /> Mon–Sat · 10am – 7pm</span>
             <div className="flex items-center gap-2">
-              {[FaFacebookF, FaInstagram, FaLinkedinIn].map((Icon, i) => (
-                <a key={i} href="#" className="text-slate-300 transition hover:text-emerald-400"><Icon size={12} /></a>
+              {[
+                { Icon: FaFacebookF, href: '#' },
+                { Icon: FaInstagram, href: INSTAGRAM_URL },
+                { Icon: FaLinkedinIn, href: '#' }
+              ].map(({ Icon, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  {...(href !== '#' ? { target: '_blank', rel: 'noreferrer' } : {})}
+                  className="text-slate-300 transition hover:text-emerald-400"
+                >
+                  <Icon size={12} />
+                </a>
               ))}
             </div>
           </div>
@@ -619,8 +632,21 @@ function Home() {
             </div>
             <p className="mt-4 text-sm text-slate-400">Premium customised bottled water for businesses, events and celebrations.</p>
             <div className="mt-5 flex gap-2">
-              {[FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaWhatsapp].map((Icon, i) => (
-                <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-slate-300 transition hover:bg-emerald-600 hover:text-white"><Icon size={14} /></a>
+              {[
+                { Icon: FaFacebookF, href: '#' },
+                { Icon: FaInstagram, href: INSTAGRAM_URL },
+                { Icon: FaLinkedinIn, href: '#' },
+                { Icon: FaYoutube, href: '#' },
+                { Icon: FaWhatsapp, href: 'https://wa.me/917999804869' }
+              ].map(({ Icon, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  {...(href !== '#' ? { target: '_blank', rel: 'noreferrer' } : {})}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-slate-300 transition hover:bg-emerald-600 hover:text-white"
+                >
+                  <Icon size={14} />
+                </a>
               ))}
             </div>
           </div>
