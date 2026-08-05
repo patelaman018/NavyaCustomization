@@ -250,7 +250,7 @@ function Home() {
           </button>
 
           <a href="#home" className="flex items-center gap-2.5">
-            <img src={asset('/logo.jpg')} alt="Navya Customs logo" className="h-11 w-11 rounded-full object-cover shadow-sm" />
+            <img src={asset('/logo.png')} alt="Navya Customs logo" className="h-11 w-11 rounded-full object-cover shadow-sm" />
             <span className="leading-tight">
               <span className="block text-lg font-extrabold tracking-tight text-[#0b2545]">Navya</span>
               <span className="block text-[10px] font-semibold uppercase tracking-[0.25em] text-emerald-600">Customization</span>
@@ -625,7 +625,7 @@ function Home() {
         <div className="mx-auto grid max-w-[1300px] gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2.5">
-              <img src={asset('/logo.jpg')} alt="Navya Customs logo" className="h-10 w-10 rounded-full object-cover" />
+              <img src={asset('/logo.png')} alt="Navya Customs logo" className="h-10 w-10 rounded-full object-cover" />
               <span className="text-lg font-extrabold text-white">Navya Customization</span>
             </div>
             <p className="mt-4 text-sm text-slate-400">Premium customised bottled water for businesses, events and celebrations.</p>

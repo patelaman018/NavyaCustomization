@@ -73,7 +73,7 @@ function Admin() {
       <div className="flex min-h-screen items-center justify-center bg-[#0b2545] px-4">
         <div className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-2xl">
           <div className="flex items-center gap-2.5">
-            <img src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Navya Customs logo" className="h-10 w-10 rounded-full object-cover" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Navya Customs logo" className="h-10 w-10 rounded-full object-cover" />
             <div>
               <p className="text-sm font-extrabold text-[#0b2545]">Navya Admin</p>
               <p className="text-xs text-slate-400">Submissions Dashboard</p>
@@ -125,7 +125,7 @@ function Admin() {
       <header className="sticky top-0 z-30 border-b border-slate-200 bg-[#0b2545] text-white">
         <div className="mx-auto flex max-w-[1300px] items-center gap-4 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-2.5">
-            <img src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Navya Customs logo" className="h-9 w-9 rounded-full object-cover" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Navya Customs logo" className="h-9 w-9 rounded-full object-cover" />
             <div className="leading-tight">
               <p className="text-sm font-extrabold">Navya Admin</p>
               <p className="text-[11px] text-slate-300">Quote Submissions</p>
