@@ -10,7 +10,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(helmet());
-app.use(cors({ origin: /^http:\/\/localhost:\d+$/ }));
+// Allow local dev (any localhost port) and the live GitHub Pages site.
+// CLIENT_URL can add/override the production origin without a code change.
+const allowedOrigins = [/^http:\/\/localhost:\d+$/, 'https://patelaman018.github.io'];
+if (process.env.CLIENT_URL) allowedOrigins.push(process.env.CLIENT_URL);
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 app.use(morgan('dev'));
 

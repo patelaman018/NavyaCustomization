@@ -1,0 +1,27 @@
+# Render Blueprint for the Navya Customization backend (Express + Neon Postgres).
+# In Render: New + -> Blueprint -> connect this repo. Render reads this file and
+# creates the service. Then set the two secret env vars (DATABASE_URL, ADMIN_KEY)
+# in the Render dashboard — they are intentionally NOT stored here.
+services:
+  - type: web
+    name: navya-customization-api
+    runtime: node
+    rootDir: server
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_SSL
+        value: "true"
+      - key: CLIENT_URL
+        value: https://patelaman018.github.io
+      # Secrets — set these in the Render dashboard (sync: false = not committed):
+      - key: DATABASE_URL      # your Neon connection string
+        sync: false
+      - key: ADMIN_KEY         # the admin dashboard passcode
+        sync: false

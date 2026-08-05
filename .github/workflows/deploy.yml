@@ -38,6 +38,11 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Point the built frontend at the hosted backend so the contact form
+          # and admin dashboard work on the live site. Defaults to the Render
+          # service URL; override by setting a repo variable named VITE_API_URL.
+          VITE_API_URL: ${{ vars.VITE_API_URL || 'https://navya-customization-api.onrender.com' }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
