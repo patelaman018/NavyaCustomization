@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+**/dist/
+
+# Environment / secrets (server/.env holds ADMIN_KEY + email creds)
+.env
+**/.env
+.env.local
+**/.env.local
+
+# Unrelated personal files that must not be published
+Image/
+
+# Logs / OS cruft
+*.log
+.DS_Store
+Thumbs.db

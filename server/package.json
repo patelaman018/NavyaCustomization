@@ -1,0 +1,23 @@
+{
+  "name": "navya-customization-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.1",
+    "dotenv": "^16.4.1",
+    "express": "^4.21.0",
+    "express-validator": "^7.0.1",
+    "helmet": "^8.1.0",
+    "mongoose": "^8.0.1",
+    "morgan": "^1.10.1",
+    "nodemailer": "^6.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.1"
+  }
+}
