@@ -1,4 +1,4 @@
-import Contact from '../models/Contact.js';
+import { createContact as insertContact, getAllContacts } from '../models/Contact.js';
 import nodemailer from 'nodemailer';
 import { body, validationResult } from 'express-validator';
 
@@ -86,7 +86,7 @@ export const createContact = async (req, res) => {
 
   let contact;
   try {
-    contact = await Contact.create(req.body);
+    contact = await insertContact(req.body);
   } catch (error) {
     console.error('Failed to save inquiry:', error);
     return res.status(500).json({ success: false, message: 'Unable to save inquiry' });
@@ -118,7 +118,7 @@ export const createContact = async (req, res) => {
 // Admin: list every inquiry, newest first.
 export const getContacts = async (req, res) => {
   try {
-    const contacts = await Contact.find({}).sort({ createdAt: -1 }).lean();
+    const contacts = await getAllContacts();
     return res.status(200).json({ success: true, count: contacts.length, data: contacts });
   } catch (error) {
     console.error('Failed to fetch inquiries:', error);

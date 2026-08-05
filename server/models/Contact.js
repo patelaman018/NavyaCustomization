@@ -1,18 +1,35 @@
-import mongoose from 'mongoose';
+import { pool } from '../config/db.js';
 
-const contactSchema = new mongoose.Schema({
-  name: { type: String, required: true, trim: true },
-  companyName: { type: String, trim: true },
-  phone: { type: String, required: true, trim: true },
-  email: { type: String, required: true, trim: true },
-  city: { type: String, trim: true },
-  businessType: { type: String, trim: true },
-  bottleSize: { type: String, trim: true },
-  quantity: { type: String, trim: true },
-  message: { type: String, required: true, trim: true },
-  createdAt: { type: Date, default: Date.now }
-}, { timestamps: true });
+// Select list aliases snake_case columns back to the camelCase keys the API and
+// the admin frontend expect (_id, companyName, businessType, bottleSize, createdAt).
+const COLS = `id AS "_id", name, company_name AS "companyName", phone, email, city,
+              business_type AS "businessType", bottle_size AS "bottleSize", quantity, message,
+              created_at AS "createdAt"`;
 
-const Contact = mongoose.model('Contact', contactSchema);
+// Insert one inquiry and return the saved row (camelCase shape).
+export const createContact = async (d) => {
+  const { rows } = await pool.query(
+    `INSERT INTO contacts
+       (name, company_name, phone, email, city, business_type, bottle_size, quantity, message)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+     RETURNING ${COLS}`,
+    [
+      d.name,
+      d.companyName ?? null,
+      d.phone,
+      d.email,
+      d.city ?? null,
+      d.businessType ?? null,
+      d.bottleSize ?? null,
+      d.quantity ?? null,
+      d.message
+    ]
+  );
+  return rows[0];
+};
 
-export default Contact;
+// List every inquiry, newest first.
+export const getAllContacts = async () => {
+  const { rows } = await pool.query(`SELECT ${COLS} FROM contacts ORDER BY created_at DESC`);
+  return rows;
+};
